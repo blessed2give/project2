@@ -13,16 +13,38 @@ or die $DBI::errstr;
 
 print "Opened database successfully\n";
 
-my $stmt = qq(CREATE TABLE PERSON
-(ID INT PRIMARY KEY     NOT NULL,
-FIRSTNAME           TEXT,
-LASTNAME            TEXT,
-HOME         TEXT););
 
-my $rv = $dbh->do($stmt);
-if($rv < 0) {
-    print $DBI::errstr;
-} else {
-    print "Table created successfully\n";
-}
+my $stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (1, 'Rose', 'Tyler', 'Earth' ));
+my $rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (2, 'Zoe', 'Hariot', 'Space Station W3' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (3, 'Jo', 'Grant', 'Earth' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (4, 'Leela', null, 'Unspecified' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (5, 'Romana', null, 'Gallifrey' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (6, 'Clara', 'Oswald', 'Earth' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (7, 'Adric', null, 'Alzarius' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+$stmt = qq(INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME,HOME)
+VALUES (8, 'Susan', 'Foreman', 'Gallifrey' ));
+$rv = $dbh->do($stmt) or die $DBI::errstr;
+
+print "Records created successfully\n";
 $dbh->disconnect();
